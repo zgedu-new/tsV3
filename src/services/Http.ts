@@ -28,8 +28,9 @@ class Http {
   request<T>(config: AxiosRequestConfig): Promise<T> {
     return new Promise((resolve, reject) => {
       this.instance
-        .request<any, AxiosResponse<Result<T>>>(config)
+        .request<T, AxiosResponse<Result<T>>>(config)
         .then((res) => {
+          reject
           resolve(res as unknown as Promise<T>)
         })
         .catch()
