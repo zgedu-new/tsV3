@@ -1,15 +1,10 @@
 <template>
-  <div>this login</div>
+  <div>This login data {{ count }}</div>
 </template>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
-  setup() {
-    return {}
-  }
-})
+<script lang="ts" setup>
+import { storeToRefs } from 'pinia'
+import appStore from '@/store'
+const { count } = storeToRefs(appStore.useCounterStoreForSetup)
 </script>
 
 <style scoped></style>

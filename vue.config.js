@@ -9,6 +9,7 @@ module.exports = {
       .set('views', '@/views')
   },
   configureWebpack: {
+    // element 自动按需加载
     plugins: [
       AutoImport({
         resolvers: [ElementPlusResolver()]
@@ -16,7 +17,17 @@ module.exports = {
       Components({
         resolvers: [ElementPlusResolver()]
       })
-    ]
+    ],
+    // pinia 加载处理。
+    module: {
+      rules: [
+        {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: 'javascript/auto'
+        }
+      ]
+    }
   }
 
   // plugins: [
